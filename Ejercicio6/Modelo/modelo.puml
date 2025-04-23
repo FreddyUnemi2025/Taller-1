@@ -1,0 +1,43 @@
+@startuml
+
+class Votante {
+    - DNI: int
+    - Nombre: str
+    - Codigo_Lugar: str
+    - Mesa: str
+}
+
+class Provincia {
+    - Provincia: str
+    - Lista_votantes: list
+}
+
+class Lugar {
+    - Codigo: str
+    - Direccion: str 
+    - Localidad: str
+}
+
+class Lista_Votantes {
+    - Votante: Votante
+}
+
+class Padron2025 {
+    - fecha_actualizacion: date
+    - Provincias: list
+    - Lugares: list
+    + agregar_provincia(provincia:Object): Provincia
+    + agregar_lugar_votacion(lugar_votacion:Object): codigo
+    + buscar_lugar(codigo): str
+    + consultar_lugar_votacion(provincia_nombre, dni): str, int
+}
+
+Padron2025 "1" -- "*" Lugar : Contiene >
+Padron2025 "1" -- "*" Provincia : Contiene >
+Provincia "1" -- "1" Lista_Votantes: Contiene >
+Lista_Votantes "1" -- "*" Votante: Contiene >
+
+@enduml
+
+
+

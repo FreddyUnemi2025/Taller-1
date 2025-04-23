@@ -1,0 +1,57 @@
+@startuml
+class Cliente {
+    - nombre: str
+    - direccion: str
+}
+
+class Orden {
+    - fecha: fecha
+    - estado: str
+    + caclImpuesto(): impuesto
+    + caclTotal(): Total 
+    + caclPesoTotal(): PesoTotal
+}
+
+class Pago {
+    - monto: int
+}
+
+class credito {
+    - fecha: fecha
+    - numero: int
+    - tipo: str
+}
+
+class Efectivo {
+    - moneda: int
+}
+
+class Cheque {
+    - nombre: str
+    - identifBanco: int
+}
+
+class DetalleOrden {
+    - cantidad: int
+    - tipoImpuesto: str
+    + caclSubtotal(precioPorCantidad, cantidad): Subtotal
+    + caclPeso(peso): Peso
+}
+
+class Item {
+    - peso: int
+    - descripcion: str
+    + precioPorCantidad(): int
+    + obtenerPeso(peso): int
+}
+
+
+Cheque "1" -- "1" Pago : Envia >
+Efectivo "1" -- "1" Pago : Envia >
+credito "1" -- "1" Pago : Envia >
+Orden "1" -- "*" Pago : Transmiten
+Cliente "1" -- "0" Orden : Ejecuta
+DetalleOrden "*" -- "1" Orden : Recibe >
+Item "1" -- "1" DetalleOrden: Recibe >
+
+@enduml
