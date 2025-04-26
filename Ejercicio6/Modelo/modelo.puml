@@ -18,7 +18,7 @@ class Lugar {
     - Localidad: str
 }
 
-class Lista_Votantes {
+class ListaVotante {
     - Votante: Votante
 }
 
@@ -34,8 +34,8 @@ class Padron2025 {
 
 Padron2025 "1" -- "*" Lugar : Contiene >
 Padron2025 "1" -- "*" Provincia : Contiene >
-Provincia "1" -- "1" Lista_Votantes: Contiene >
-Lista_Votantes "1" -- "*" Votante: Contiene >
+Provincia "1" -- "1" ListaVotante: Contiene >
+ListaVotante "1" -- "*" Votante: Contiene >
 
 @enduml
 

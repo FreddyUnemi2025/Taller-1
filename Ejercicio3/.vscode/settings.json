@@ -1,0 +1,3 @@
+{ "plantuml.render": "PlantUMLServer",
+"plantuml.server": "http://www.plantuml.com/plantuml"
+}

@@ -1,0 +1,28 @@
+@startuml Tienda
+
+class Producto {
+  - codigo: str
+  - precio: float
+  + actualizar_codigo(codigo: str): void
+  + actualizar_precio(precio: float): void
+}
+
+class Factura {
+  - numero: int
+  - productos: List[Producto]
+  + agregar_producto(producto: Producto): void
+  + consultar_numero(): int
+  + actualizar_producto(index: int, producto: Producto): void
+  + imprimir_factura(): void
+}
+
+class Tienda {
+  - facturas: List[Factura]
+  + registrar_factura(factura: Factura): void
+  + mostrar_facturas(): List[Factura]
+}
+
+Factura "1" -- "*" Producto : contiene >
+Tienda "1" -- "*" Factura : administra >
+
+@enduml

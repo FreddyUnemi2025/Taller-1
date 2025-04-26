@@ -1,0 +1,20 @@
+@startuml  
+class Cliente {  
+  - nombre: str  
+  + serAtendido(): void  
+}  
+
+class Cajero {  
+  - nombre: str  
+  + atender(cliente: Cliente): void  
+}  
+
+class Banco {  
+  - cola: List<Cliente>  
+  + agregarCliente(cliente: Cliente): void  
+  + atenderClientes(): void  
+}  
+
+Banco "1" -- "*" Cliente : Contiene >  
+Cajero "1" -- "*" Cliente : atiende >  
+@enduml  

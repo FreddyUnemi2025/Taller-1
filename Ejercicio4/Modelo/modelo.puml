@@ -1,0 +1,23 @@
+@startuml  
+class EmpresaLista {  
+    - empleados: List<Empleado>  
+    + agregarTarea(codigoEmpleado: int, tarea: ColaTarea): void  
+    + procesarTareas(): void  
+}  
+
+class Empleado {  
+    - codigo: int  
+    - cantidadTareas: int  
+    - colaTareas: List<ColaTarea>  
+    + agregarTarea(tarea: ColaTarea): void  
+}  
+
+class ColaTarea {  
+    - areaSolicitante: str  
+    - descripcion: str  
+    + mostrarTarea(): void  
+}  
+
+EmpresaLista "1" -- "*" Empleado : contiene >  
+Empleado "1" -- "*" ColaTarea : tiene >  
+@enduml  

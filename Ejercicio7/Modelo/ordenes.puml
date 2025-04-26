@@ -1,11 +1,12 @@
 @startuml
+
 class Cliente {
     - nombre: str
     - direccion: str
 }
 
 class Orden {
-    - fecha: fecha
+    - fecha: date
     - estado: str
     + caclImpuesto(): impuesto
     + caclTotal(): Total 
@@ -16,17 +17,20 @@ class Pago {
     - monto: int
 }
 
-class credito {
-    - fecha: fecha
+class Credito {
+    - monto: int
+    - fecha: date
     - numero: int
     - tipo: str
 }
 
 class Efectivo {
+    - monto: int
     - moneda: int
 }
 
 class Cheque {
+    - monto: int
     - nombre: str
     - identifBanco: int
 }
@@ -46,9 +50,9 @@ class Item {
 }
 
 
-Cheque "1" -- "1" Pago : Envia >
-Efectivo "1" -- "1" Pago : Envia >
-credito "1" -- "1" Pago : Envia >
+Cheque "1" -- "1" Pago : Hereda >
+Efectivo "1" -- "1" Pago : Hereda >
+Credito "1" -- "1" Pago : Hereda >
 Orden "1" -- "*" Pago : Transmiten
 Cliente "1" -- "0" Orden : Ejecuta
 DetalleOrden "*" -- "1" Orden : Recibe >

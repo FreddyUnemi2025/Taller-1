@@ -4,7 +4,7 @@ import datetime
 def prueba():
     cliente1 = Cliente("Freddy", "Av. Principal 123")
 
-    item1 = Item(0, "Laptop")
+    item1 = Item(2, "Laptop")
     
     detalle = DetalleOrden(cantidad=2, tipoImpuesto="IVA")
 
@@ -12,23 +12,24 @@ def prueba():
 
     total = orden1.CalcTotal(detalle, item1)
     peso = orden1.CalcPesoTotal(detalle, item1)
-    pago = Pago(total)
+    
     si = 'si'
+    
     while si == 'si':
         tipo_pago = str(input("Elige el tipo de pago (Efectivo, Credito, Cheque): "))
         if tipo_pago == 'Efectivo':
             moneda = input("Elige la divisa (Euro/Dolar):")
-            mi_pago = Efectivo(moneda)
+            mi_pago = Efectivo(total, moneda)
             break
         elif tipo_pago == 'Credito':
             fecha = datetime.datetime()
             tipo = input("Elige tipo de credito (Minimo/Diferido):")
             numero = input("Numero de tarjeta: ")
-            mi_pago = Credito(fecha, numero, tipo)
+            mi_pago = Credito(total, fecha, numero, tipo)
             break
         elif tipo_pago == 'Cheque':
             identificacion = input("Su identificacion del banco: ")
-            mi_pago = Cheque(cliente1.nombre, identificacion)
+            mi_pago = Cheque(total, cliente1.nombre, identificacion)
             break
 
         print("Porfavor escriba correctamente una de las opciones...\n")

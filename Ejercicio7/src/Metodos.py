@@ -59,22 +59,24 @@ class Orden():
     def CalcPesoTotal(self, detalles, item):
         return detalles.CalcPeso(item)
 
-
-class Pago():
+class Pago:
     def __init__(self, monto):
         self.monto = monto
 
-class Credito():
-    def __init__(self, fecha, numero, tipo):
+class Credito(Pago):
+    def __init__(self, monto, fecha, numero, tipo):
+        super().__init__(monto)
         self.fecha = fecha
         self.numero = numero
         self.tipo = tipo
 
-class Efectivo():
-    def __init__(self, moneda):
+class Efectivo(Pago):
+    def __init__(self, monto, moneda):
+        super().__init__(monto)
         self.moneda = moneda
 
-class Cheque():
-    def __init__(self, nombre, identifBanco):
+class Cheque(Pago):
+    def __init__(self, monto, nombre, identifBanco):
+        super().__init__(monto)
         self.nombre = nombre
         self.identifBanco = identifBanco

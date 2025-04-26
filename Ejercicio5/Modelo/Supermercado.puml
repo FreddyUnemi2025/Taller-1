@@ -1,0 +1,37 @@
+@startuml supermercado
+
+class Cliente {
+  - numero: int
+  - monto: float
+}
+
+class Cola {
+  - cola_clientes: List[Cliente]
+  + encolar(cola_clientes: Cliente): void
+  + desencolar(): Cliente
+  + is_empty(): bool
+  + __len__(): int
+  + __iter__(): Iterator
+}
+
+class Caja {
+  - numero_caja: int
+  - recaudacion: float
+  - clientes_atendidos: int
+  - cola_clientes: Cola
+  + agregar_cliente(cliente: Cliente): void
+  + procesar_clientes(): void
+  + cantidad_por_atender(): int
+}
+
+class Supermercado {
+  - lista_cajas: List[Caja]
+  + procesar_todos_los_clientes(): void
+  + agregar_cliente_a_caja(cliente: Cliente): void
+}
+
+Caja "1" *-- "1" Cola : contiene >
+Caja "1" -- "*" Cliente : atiende >
+Supermercado "1" -- "*" Caja : contiene >
+
+@enduml
