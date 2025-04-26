@@ -11,8 +11,12 @@ class Tarea:
         return f"Área: {self.area_solicitante} | Descripción: {self.descripcion}"
 
 class Empleado:
-    def __init__(self, codigo=None, nombre=None, genero=None):
-        self.codigo = codigo if codigo is not None else fake.random_int(min=1, max=1000)
+    contador_codigo = 1 
+    
+    def __init__(self, nombre=None, genero=None):
+        self.codigo = Empleado.contador_codigo
+        Empleado.contador_codigo += 1 
+        
         self.nombre = nombre if nombre else fake.name()
         self.genero = genero if genero else fake.random_element(elements=('Masculino', 'Femenino'))
         self.cantidad_tareas = 0
@@ -50,7 +54,8 @@ class EmpresaLista:
 
     def procesar_tareas(self):
         for empleado in self.empleados:
-            while empleado.cantidad_tareas >= 15:
-                tarea = empleado.cola_tareas.pop(0)
-                empleado.cantidad_tareas -= 1
-                print(f"Procesada tarea para Empleado {empleado.nombre}: {tarea.mostrar_tarea()}")
+            if 15 <= empleado.codigo <= 30:
+                while empleado.cola_tareas:
+                    tarea = empleado.cola_tareas.pop(0)
+                    empleado.cantidad_tareas -= 1
+                    print(f"Procesada tarea para Empleado {empleado.nombre}({empleado.codigo}): {tarea.mostrar_tarea()}")

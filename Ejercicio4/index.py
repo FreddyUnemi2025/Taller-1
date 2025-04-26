@@ -3,10 +3,10 @@ from src.metodos.Clases import Tarea, Empleado, EmpresaLista
 def probar_empresa():
     empresa = EmpresaLista()
 
-    for i in range(1, 10):
+    for i in range(1, 25):
         empresa.agregar_empleado(Empleado())
 
-    for _ in range(200):
+    for _ in range(300):
         empresa.agregar_tareas(Tarea())
         empresa.asignar_tarea()
 
