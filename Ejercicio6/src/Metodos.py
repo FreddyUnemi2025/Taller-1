@@ -1,7 +1,7 @@
 
-class LugarVotacion:
-    def __init__(self, codigo, direccion, localidad):
-        self.codigo = codigo
+class Lugar:
+    def __init__(self, codigo_lugar_votacion, direccion, localidad):
+        self.codigo_lugar_votacion = codigo_lugar_votacion
         self.direccion = direccion
         self.localidad = localidad
 
@@ -10,46 +10,35 @@ class Votante:
     def __init__(self, dni, nombre, codigo_lugar, mesa):
         self.dni = dni
         self.nombre = nombre
-        self.codigo_lugar = codigo_lugar
+        self.codigo_lugar_votacion = codigo_lugar
         self.mesa = mesa
 
 
 class Provincia:
     def __init__(self, nombre):
         self.nombre = nombre
-        self.votantes = []  
+        self.votantes = []
 
+    def agregar_votante(self, votante):
+        self.votantes.append(votante)
 
-class Padron2025:
+    
+
+class Fecha: 
+    def __init__(self, año, mes, dia):
+        self.año = año
+        self.mes = mes
+        self.dia = dia
+        
+
+class PadronElectoral:
     def __init__(self, fecha_actualizacion):
         self.fecha_actualizacion = fecha_actualizacion
-        self.provincias = []  
-        self.lugares = []    
+        self.lista_provincias = []  
+        self.lista_lugares = []    
 
-    def agregar_provincia(self, provincia):
-        self.provincias.append(provincia)
+    def agregar_provincias(self, provincia):
+        self.lista_provincias.append(provincia)
 
     def agregar_lugar_votacion(self, lugar):
-        self.lugares.append(lugar)
-
-    def buscar_lugar(self, codigo):
-        for lugar in self.lugares:
-            if lugar.codigo == codigo:
-                return lugar
-        return None
-
-    def consultar_lugar_votacion(self, provincia_nombre, dni):
-        for provincia in self.provincias:
-            if provincia.nombre == provincia_nombre:
-                for votante in provincia.votantes:
-                    if votante.dni == dni:
-                        lugar = self.buscar_lugar(votante.codigo_lugar)
-                        if lugar:
-                            resultado = {
-                                "nombre": votante.nombre,
-                                "direccion": lugar.direccion,
-                                "localidad": lugar.localidad,
-                                "mesa": votante.mesa
-                            }
-                            return True, resultado
-        return False, {}
+        self.lista_lugares.append(lugar)
