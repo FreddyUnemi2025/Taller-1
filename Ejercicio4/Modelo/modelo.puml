@@ -1,23 +1,29 @@
 @startuml  
 class EmpresaLista {  
     - empleados: List<Empleado>  
-    + agregarTarea(codigoEmpleado: int, tarea: ColaTarea): void  
-    + procesarTareas(): void  
+    - tareas: List<Tareas>
+    + agregar_tareas(Tarea):
+    + agregar_empleado(Empleado)
+    + asignar_tarea():
+    + procesar_tareas():
 }  
 
 class Empleado {  
-    - codigo: int  
+    - codigo: int 
+    - nombre: str
+    - genero: str 
     - cantidadTareas: int  
-    - colaTareas: List<ColaTarea>  
-    + agregarTarea(tarea: ColaTarea): void  
+    - colaTareas: List<Tarea>  
+    + agregar_tarea(Tarea):  
 }  
 
-class ColaTarea {  
-    - areaSolicitante: str  
-    - descripcion: str  
-    + mostrarTarea(): void  
-}  
 
-EmpresaLista "1" -- "*" Empleado : contiene >  
-Empleado "1" -- "*" ColaTarea : tiene >  
+class Tarea {
+    - area_solicitante: str
+    - descripcion: str 
+    + mostrar_tarea():
+}
+
+EmpresaLista "1" -- "1..*" Empleado : contiene >  
+Empleado "1" -- "1..*" Tarea : tiene >  
 @enduml  

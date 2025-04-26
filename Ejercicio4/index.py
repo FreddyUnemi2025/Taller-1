@@ -1,16 +1,28 @@
-from src.metodos.Clases import EmpresaLista, ColaTarea  
+from src.metodos.Clases import Tarea, Empleado, EmpresaLista
 
-def probar_empresa():  
-    empresa = EmpresaLista()  
+def probar_empresa():
+    empresa = EmpresaLista()
 
-     
-    empresa.agregar_tarea(15, ColaTarea("Ventas", "Realizar informe de ventas"))  
-    empresa.agregar_tarea(20, ColaTarea("Recursos Humanos", "Actualizar base de datos"))  
-    empresa.agregar_tarea(15, ColaTarea("Finanzas", "Preparar presupuesto"))  
-    empresa.agregar_tarea(28, ColaTarea("IT", "Actualizar sistema operativo"))  
+    for i in range(1, 10):
+        empresa.agregar_empleado(Empleado())
 
-    # Procesar tareas  
-    empresa.procesar_tareas()  
+    for _ in range(200):
+        empresa.agregar_tareas(Tarea())
+        empresa.asignar_tarea()
+
+    print("\n--- Tareas antes de procesar ---")
+    for empleado in empresa.empleados:
+        print(f"Empleado {empleado.codigo} tiene {empleado.cantidad_tareas} tareas.")
+
+
+    print("\n--- Procesando tareas de empleados ---")
+    empresa.procesar_tareas()
+
+
+    print("\n--- Tareas después de procesar ---")
+    for empleado in empresa.empleados:
+        print(f"Empleado {empleado.nombre} codigo {empleado.codigo} tiene {empleado.cantidad_tareas} tareas.")
+
 
 if __name__ == "__main__":  
-    probar_empresa()  
+    probar_empresa()
