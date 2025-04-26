@@ -13,8 +13,6 @@ def probar_Pila():
     print("Reverse: ", pila.reverse().elementos)
 
 
-probar_Pila()
-
 def probar_Cola():
     print("Prueba Cola")
     cola = Cola()
@@ -26,4 +24,11 @@ def probar_Cola():
     print("Pop: ", cola.pop())
     print("Reverse: ", cola.reverse().elementos)
 
-probar_Cola()
+
+
+def main():
+    probar_Pila()
+    probar_Cola()
+
+if __name__ == '__main__':
+    main()
