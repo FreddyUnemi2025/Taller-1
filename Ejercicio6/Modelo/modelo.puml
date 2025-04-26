@@ -8,26 +8,25 @@ class Votante {
 }
 
 class Provincia {
-    - Nombre: str
-    - Lista_votantes: list
+    - nombre: str
+    - lista_votantes: list
     + agregar_votantes: Votante
 }
 
 class Lugar {
-    - Codigo_lugar_votacion: str
-    - Direccion: str 
-    - Localidad: str
+    - codigo_lugar_votacion: str
+    - direccion: str 
+    - localidad: str
 }
 
 
 class PadronElectoral {
-    - fecha_actualizacion: Fecha
+    - fecha: Fecha
     - lista_provincias: List<Provincia>
     - lista_lugares: List<Lugar>
-    + agregar_provincias(Provincia):
+    + agregar_provincia(Provincia):
     + agregar_lugar_votacion(Lugar):
-    + buscar_lugar(codigo): str
-    + consultar_lugar_votacion(provincia_nombre, dni): str, int
+    + consultar_lugar_votacion( provincia, dni_votante, lista_lugares):
 }
 
 class Fecha {
@@ -37,8 +36,8 @@ class Fecha {
 }
 
 PadronElectoral "1" -- "1" Fecha: Tiene >
-PadronElectoral "1" -- "*" Lugar : Contiene >
-PadronElectoral "1" -- "*" Provincia : Contiene >
+PadronElectoral "1" -- "1..*" Lugar : Contiene >
+PadronElectoral "1" -- "1..*" Provincia : Contiene >
 Provincia "1" -- "1..*" Votante: Contiene >
 
 @enduml

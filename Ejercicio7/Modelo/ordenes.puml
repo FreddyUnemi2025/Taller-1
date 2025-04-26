@@ -49,10 +49,9 @@ class Item {
     + obtenerPeso(peso): int
 }
 
-
-Cheque "1" -- "1" Pago : Hereda >
-Efectivo "1" -- "1" Pago : Hereda >
-Credito "1" -- "1" Pago : Hereda >
+Pago <|-- Cheque
+Pago <|-- Efectivo
+Pago <|-- Credito
 Orden "1" -- "*" Pago : Transmiten
 Cliente "1" -- "0" Orden : Ejecuta
 DetalleOrden "*" -- "1" Orden : Recibe >
