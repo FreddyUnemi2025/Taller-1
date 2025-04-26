@@ -28,10 +28,11 @@ class Supermercado {
   - lista_cajas: List[Caja]
   + procesar_todos_los_clientes(): void
   + agregar_cliente_a_caja(cliente: Cliente): void
+  + agregar_caja(Caja): 
 }
 
 Caja "1" *-- "1" Cola : contiene >
-Caja "1" -- "*" Cliente : atiende >
-Supermercado "1" -- "*" Caja : contiene >
+Cola "1" -- "1..*" Cliente : contiene >
+Supermercado "1" -- "1..*" Caja : contiene >
 
 @enduml
