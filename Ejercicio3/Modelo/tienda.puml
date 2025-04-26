@@ -12,6 +12,7 @@ class Factura {
   - productos: List[Producto]
   + agregar_producto(producto: Producto): void
   + consultar_numero(): int
+  + consultar_productos(): str
   + actualizar_producto(index: int, producto: Producto): void
   + imprimir_factura(): void
 }
