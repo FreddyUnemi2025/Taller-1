@@ -59,9 +59,3 @@ class EmpresaLista:
                     tarea = empleado.cola_tareas.pop(0)
                     empleado.cantidad_tareas -= 1
                     print(f"Procesada tarea para Empleado {empleado.nombre}({empleado.codigo}): {tarea.mostrar_tarea()}")
-
-
-lista = [1,2,3,4,5]
-a = lista.pop(0)
-a = 1
-lista = [2,3,4,5]
