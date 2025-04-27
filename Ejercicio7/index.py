@@ -14,7 +14,7 @@ def prueba():
     peso = orden1.CalcPesoTotal(detalle, item1)
     
     si = 'si'
-    
+    moneda = 'Dolar'
     while si == 'si':
         tipo_pago = str(input("Elige el tipo de pago (Efectivo, Credito, Cheque): "))
         if tipo_pago == 'Efectivo':
@@ -22,7 +22,7 @@ def prueba():
             mi_pago = Efectivo(total, moneda)
             break
         elif tipo_pago == 'Credito':
-            fecha = datetime.datetime()
+            fecha = datetime.datetime.now()
             tipo = input("Elige tipo de credito (Minimo/Diferido):")
             numero = input("Numero de tarjeta: ")
             mi_pago = Credito(total, fecha, numero, tipo)
